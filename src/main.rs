@@ -574,7 +574,7 @@ async fn main() -> std::io::Result<()> {
             .service(create_ticket).service(list_tickets).service(event_tickets)
             .service(create_order).service(list_orders).service(delete_order)
     })
-    .bind("127.0.0.1:8081")?
+    .bind("0.0.0.0:8081")?
     .run()
     .await
 }
