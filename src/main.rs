@@ -557,7 +557,7 @@ async fn main() -> std::io::Result<()> {
     let conn = Connection::open("tickethub.db").expect("Failed to open DB");
     init_db(&conn).expect("Failed to init DB");
     let data = web::Data::new(AppState { db: Mutex::new(conn) });
-    println!("🎟  TicketHub running at http://127.0.0.1:8080");
+    println!("🎟  TicketHub running at http://127.0.0.1:8081");
     HttpServer::new(move || {
         let cors = Cors::default().allow_any_origin().allow_any_method().allow_any_header();
         App::new()
