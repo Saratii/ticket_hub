@@ -6,6 +6,8 @@ use serde::{Deserialize, Serialize};
 use std::sync::Mutex;
 use uuid::Uuid;
 
+const HOST: &str = "0.0.0.0:8081";
+
 struct AppState {
     db: Mutex<Connection>,
 }
@@ -557,7 +559,7 @@ async fn main() -> std::io::Result<()> {
     let conn = Connection::open("tickethub.db").expect("Failed to open DB");
     init_db(&conn).expect("Failed to init DB");
     let data = web::Data::new(AppState { db: Mutex::new(conn) });
-    println!("🎟  TicketHub running at http://127.0.0.1:8081");
+    println!("🎟  TicketHub running at http://{}", HOST);
     HttpServer::new(move || {
         let cors = Cors::default().allow_any_origin().allow_any_method().allow_any_header();
         App::new()
@@ -574,7 +576,7 @@ async fn main() -> std::io::Result<()> {
             .service(create_ticket).service(list_tickets).service(event_tickets)
             .service(create_order).service(list_orders).service(delete_order)
     })
-    .bind("0.0.0.0:8081")?
+    .bind(HOST)?
     .run()
     .await
 }
