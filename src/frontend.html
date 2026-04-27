@@ -56,7 +56,7 @@
       opacity: 0.4;
     }
 
-    /* LOGIN SCREEN */
+
     #login-screen {
       position: fixed;
       inset: 0;
@@ -151,7 +151,16 @@
       display: none;
     }
 
-    /* APP (hidden until logged in) */
+
+    #optional-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #optional-details summary::marker {
+      display: none;
+    }
+
+
     #app {
       display: none;
     }
@@ -160,7 +169,7 @@
       display: block;
     }
 
-    /* SIDEBAR */
+
     #sidebar {
       position: fixed;
       top: 0;
@@ -281,7 +290,7 @@
       border-color: #505050;
     }
 
-    /* MAIN */
+
     #main {
       margin-left: 220px;
       min-height: 100vh;
@@ -317,7 +326,7 @@
       padding: 24px 28px;
     }
 
-    /* PANELS */
+
     .panel {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -346,7 +355,7 @@
       padding: 18px;
     }
 
-    /* CARDS GRID */
+
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -424,7 +433,7 @@
       border-top: 1px solid var(--border);
     }
 
-    /* TABLE */
+
     .data-table {
       width: 100%;
       border-collapse: collapse;
@@ -475,7 +484,7 @@
       font-size: 12px;
     }
 
-    /* BUTTONS */
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -543,7 +552,7 @@
       font-size: 11px;
     }
 
-    /* FORMS */
+
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -609,7 +618,7 @@
       padding-top: 4px;
     }
 
-    /* SEARCH BAR */
+
     .search-bar {
       display: flex;
       gap: 10px;
@@ -637,7 +646,7 @@
       border-color: var(--orange-dim);
     }
 
-    /* BADGE */
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -673,7 +682,7 @@
       border: 1px solid var(--border);
     }
 
-    /* STATS ROW */
+
     .stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -722,7 +731,7 @@
       margin-top: 3px;
     }
 
-    /* MODAL */
+
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -794,7 +803,7 @@
       padding: 20px;
     }
 
-    /* TOAST */
+
     #toast-container {
       position: fixed;
       bottom: 20px;
@@ -844,7 +853,7 @@
       }
     }
 
-    /* EMPTY STATE */
+
     .empty {
       text-align: center;
       padding: 48px 20px;
@@ -869,7 +878,7 @@
       font-size: 13px;
     }
 
-    /* PAGE SECTIONS */
+
     .section {
       display: none;
     }
@@ -878,14 +887,14 @@
       display: block;
     }
 
-    /* DIVIDER */
+
     .divider {
       height: 1px;
       background: var(--border);
       margin: 16px 0;
     }
 
-    /* ID TAG */
+
     .id-tag {
       font-family: 'DM Mono', monospace;
       font-size: 10px;
@@ -895,7 +904,7 @@
       border-radius: 3px;
     }
 
-    /* SCROLLBAR */
+
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -914,12 +923,12 @@
       background: var(--border);
     }
 
-    /* RESPONSIVE TABLE WRAPPER */
+
     .table-wrap {
       overflow-x: auto;
     }
 
-    /* ICON BUTTON */
+
     .icon-btn {
       background: none;
       border: 1px solid var(--border);
@@ -981,7 +990,7 @@
       font-family: 'DM Mono', monospace;
     }
 
-    /* TICKET PRICE HIGHLIGHT */
+
     .price-tag {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 22px;
@@ -989,7 +998,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* EVENT CARD DATE BLOCK */
+
     .date-block {
       background: var(--orange-pale);
       border: 1px solid rgba(255, 163, 26, 0.2);
@@ -1018,22 +1027,37 @@
 
 <body>
 
-  <!-- LOGIN SCREEN -->
+
   <div id="login-screen">
     <div class="login-box">
       <div class="login-logo">TicketHub</div>
       <div class="login-sub">Event Platform</div>
       <div class="login-label">Username</div>
       <input class="login-input" type="text" id="login-username" placeholder="Enter your username" autocomplete="off">
+      <details style="margin-bottom:20px" id="optional-details">
+        <summary
+          style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);font-family:'DM Mono',monospace;cursor:pointer;user-select:none;list-style:none;display:flex;align-items:center;gap:6px"
+          onclick="toggleArrow()">
+          <span id="optional-arrow" style="display:inline-block;transition:transform 0.15s">&#9658;</span>&nbsp;Optional
+          details
+        </summary>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:0">
+          <div class="login-label">Password</div>
+          <input class="login-input" type="password" id="login-password" placeholder="Set a password"
+            autocomplete="new-password">
+          <div class="login-label">Phone</div>
+          <input class="login-input" type="tel" id="login-phone" placeholder="e.g. 555-0100">
+        </div>
+      </details>
       <button class="login-btn" onclick="doLogin()">Sign In</button>
       <div class="login-error" id="login-error">Something went wrong. Please try again.</div>
     </div>
   </div>
 
-  <!-- APP -->
+
   <div id="app">
 
-    <!-- SIDEBAR -->
+
     <nav id="sidebar">
       <div class="logo">
         <div class="logo-text">TicketHub</div>
@@ -1068,7 +1092,7 @@
       </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
+
     <div id="main">
       <div class="topbar">
         <div class="page-title" id="page-title">HOME</div>
@@ -1076,7 +1100,7 @@
       </div>
       <div class="content">
 
-        <!-- DASHBOARD -->
+
         <div class="section active" id="section-dashboard">
           <div class="stats-row" id="stats-row">
             <div class="stat-card">
@@ -1118,7 +1142,7 @@
           </div>
         </div>
 
-        <!-- EVENTS -->
+
         <div class="section" id="section-events">
           <div class="search-bar">
             <input type="text" id="ev-search-artist" placeholder="Search by artist...">
@@ -1131,12 +1155,12 @@
           <div class="cards-grid" id="events-grid"></div>
         </div>
 
-        <!-- ARTISTS -->
+
         <div class="section" id="section-artists">
           <div class="cards-grid" id="artists-grid"></div>
         </div>
 
-        <!-- TICKETS -->
+
         <div class="section" id="section-tickets">
           <div class="panel">
             <div class="panel-header"><span class="panel-title">Available Tickets</span></div>
@@ -1156,7 +1180,7 @@
           </div>
         </div>
 
-        <!-- MY ORDERS -->
+
         <div class="section" id="section-myorders">
           <div class="panel">
             <div class="panel-header"><span class="panel-title">My Tickets</span></div>
@@ -1181,9 +1205,9 @@
       </div>
     </div>
 
-  </div><!-- /#app -->
+  </div>
 
-  <!-- MODALS -->
+
   <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
     <div class="modal" id="modal">
       <div class="modal-header">
@@ -1194,25 +1218,31 @@
     </div>
   </div>
 
-  <!-- TOAST -->
+
   <div id="toast-container"></div>
 
   <script>
     const API = '';
     let currentUser = null;
 
-    // ── LOGIN ────────────────────────────────────────────────────────────────────
-
     async function doLogin() {
       const username = document.getElementById('login-username').value.trim();
       if (!username) return;
+      const password = document.getElementById('login-password').value.trim();
+      const phone = document.getElementById('login-phone').value.trim();
       const res = await apiFetch('/api/users');
       const users = res.data || [];
       let match = users.find(u => u.username.toLowerCase() === username.toLowerCase());
       if (!match) {
+        const payload = {
+          username,
+          email: username + '@tickethub.local',
+          password: password || 'placeholder',
+          ...(phone ? { phone } : {}),
+        };
         const created = await apiFetch('/api/users', {
           method: 'POST',
-          body: JSON.stringify({ username, email: username + '@tickethub.local', password: 'placeholder' })
+          body: JSON.stringify(payload)
         });
         if (!created.success) { document.getElementById('login-error').style.display = 'block'; return; }
         const fresh = await apiFetch('/api/users');
@@ -1226,6 +1256,13 @@
       loadDashboard();
     }
 
+    function toggleArrow() {
+      const details = document.getElementById('optional-details');
+      const arrow = document.getElementById('optional-arrow');
+
+      arrow.style.transform = details.open ? '' : 'rotate(90deg)';
+    }
+
     document.getElementById('login-username').addEventListener('keydown', e => {
       if (e.key === 'Enter') doLogin();
     });
@@ -1235,10 +1272,13 @@
       document.getElementById('login-screen').classList.remove('hidden');
       document.getElementById('app').classList.remove('visible');
       document.getElementById('login-username').value = '';
+      document.getElementById('login-password').value = '';
+      document.getElementById('login-phone').value = '';
       document.getElementById('login-error').style.display = 'none';
-    }
 
-    // ── NAV ──────────────────────────────────────────────────────────────────────
+      document.getElementById('optional-details').removeAttribute('open');
+      document.getElementById('optional-arrow').style.transform = '';
+    }
 
     function navigate(section) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -1263,8 +1303,6 @@
       else if (section === 'myorders') loadMyOrders();
     }
 
-    // ── API ──────────────────────────────────────────────────────────────────────
-
     async function apiFetch(path, opts = {}) {
       try {
         const res = await fetch(API + path, {
@@ -1277,8 +1315,6 @@
       }
     }
 
-    // ── TOAST ────────────────────────────────────────────────────────────────────
-
     function toast(msg, type = 'info') {
       const el = document.createElement('div');
       el.className = `toast ${type}`;
@@ -1287,8 +1323,6 @@
       document.getElementById('toast-container').appendChild(el);
       setTimeout(() => el.remove(), 3500);
     }
-
-    // ── MODAL ────────────────────────────────────────────────────────────────────
 
     function openModal(title, html) {
       document.getElementById('modal-title').textContent = title;
@@ -1301,8 +1335,6 @@
         document.getElementById('modal-overlay').classList.remove('open');
       }
     }
-
-    // ── DASHBOARD ────────────────────────────────────────────────────────────────
 
     async function loadDashboard() {
       const [events, artists, myOrders] = await Promise.all([
@@ -1330,8 +1362,6 @@
       <td><button class="btn btn-ghost btn-xs" onclick="showEventDetail('${e.event_id}')">Get Tickets</button></td>
     </tr>`).join('');
     }
-
-    // ── EVENTS ───────────────────────────────────────────────────────────────────
 
     async function loadEvents() {
       const artist = document.getElementById('ev-search-artist')?.value || '';
@@ -1423,8 +1453,6 @@
       else toast(res.message || 'Error', 'error');
     }
 
-    // ── ARTISTS ──────────────────────────────────────────────────────────────────
-
     async function loadArtists() {
       const res = await apiFetch('/api/artists');
       const artists = res.data || [];
@@ -1465,8 +1493,6 @@
     </div>`);
     }
 
-    // ── TICKETS ──────────────────────────────────────────────────────────────────
-
     async function loadTickets() {
       const res = await apiFetch('/api/tickets');
       const tickets = res.data || [];
@@ -1487,8 +1513,6 @@
       </td>
     </tr>`).join('');
     }
-
-    // ── MY ORDERS ────────────────────────────────────────────────────────────────
 
     async function loadMyOrders() {
       const res = await apiFetch(`/api/users/${currentUser.user_id}/orders`);
@@ -1515,8 +1539,6 @@
       if (res.success) { toast('Order cancelled', 'success'); loadMyOrders(); loadDashboard(); }
       else toast(res.message || 'Error', 'error');
     }
-
-    // ── UTILS ────────────────────────────────────────────────────────────────────
 
     function formatDate(str) {
       if (!str) return '—';
