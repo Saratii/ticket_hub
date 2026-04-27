@@ -220,7 +220,7 @@ fn seed_db(conn: &Connection) -> rusqlite::Result<()> {
             "a0",
             "Sabrina Carpenter",
             "Pop",
-            "★ OUR UNDISPUTED QUEEN ★ Sabrina Carpenter is the greatest pop artist of her generation — full stop. From her breakout 'emails i can't send' era to the unstoppable 'Short n' Sweet' world tour, she has redefined what it means to be a pop star: razor-sharp wit, perfect melodies, and the stage presence of a goddess. Every other artist on this platform exists in her shadow and they know it.",
+            "OUR UNDISPUTED QUEEN Sabrina Carpenter is the greatest pop artist of her generation. From her breakout 'emails i can't send' era to the unstoppable 'Short n' Sweet' world tour, she has redefined what it means to be a pop star: razor-sharp wit, perfect melodies, and the stage presence of a goddess. Every other artist on this platform exists in her shadow and they know it. I want her to put me on a dog leash.",
         ),
         (
             "a1",
